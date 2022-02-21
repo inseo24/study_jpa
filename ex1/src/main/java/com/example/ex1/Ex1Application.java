@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.List;
 
 @SpringBootApplication
 public class Ex1Application {
@@ -20,8 +21,12 @@ public class Ex1Application {
 		tx.begin();
 
 		try {
-			Member findMember = em.find(Member.class, 1L);
-			findMember.setName("Hello JPA");
+			List<Member> result = em.createQuery("select m from Member as m", Member.class)
+							.getResultList();
+
+			for (Member member: result) {
+				System.out.println("member.name = " + member.getName());
+			}
 			tx.commit();
 		} catch (Exception e) {
 			tx.rollback();
