@@ -20,11 +20,9 @@ public class Ex1Application {
 		tx.begin();
 
 		try {
-			Member member = new Member();
-			member.setId(1L);
-			member.setName("Hello1A");
-
-			em.persist(member);
+			Member findMember = em.find(Member.class, 1L);
+			System.out.println("findMember id : " + findMember.getId());
+			System.out.println("findMember name : " + findMember.getName());
 
 			tx.commit();
 		} catch (Exception e) {
