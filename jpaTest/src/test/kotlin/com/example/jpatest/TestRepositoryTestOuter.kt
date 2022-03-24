@@ -1,5 +1,7 @@
 package com.example.jpatest
 
+import com.example.jpatest.dateCheck.TestEntity
+import com.example.jpatest.dateCheck.TestRepository
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
@@ -8,7 +10,7 @@ import java.time.LocalDateTime
 import java.time.LocalTime
 
 @SpringBootTest
-class TestRepositoryTest {
+class TestRepositoryTestOuter {
 
     @Autowired
     lateinit var testRepository: TestRepository
@@ -163,7 +165,8 @@ class TestRepositoryTest {
         )
 
         println()
-
+        // TODO where + order by + limit
+        // TODO 1) where 조건 엔티티 검색 2) select * data 3) order by 4) limit
         val user1Response = testRepository.findFirstByUserIdOrderByCreatedAtDesc(userId = 1)
         val user2Response = testRepository.findFirstByUserIdOrderByCreatedAtDesc(userId = 2)
         val user3Response = testRepository.findFirstByUserIdOrderByCreatedAtDesc(userId = 3)

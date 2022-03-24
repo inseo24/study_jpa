@@ -1,5 +1,6 @@
-package com.example.jpatest
+package com.example.jpatest.dateCheck
 
+import com.example.jpatest.dateCheck.TestEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import java.time.LocalDateTime
 

@@ -1,4 +1,4 @@
-package com.example.jpatest
+package com.example.jpatest.dateCheck
 
 import java.time.LocalDateTime
 import javax.persistence.*
