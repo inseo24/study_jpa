@@ -68,6 +68,8 @@ class TestOuterService(
     // 내부 트랜잭션이 있을 때, 내부 메서드에서 runtime exception 이 발생하면 rollback marking 이 되어 외부 트랜잭션에서도 롤백이 됨
     // DataSourceTransactionManager 을 직접 쓸 때는 내부 트랜잭션이 문제가 생겨도 외부 트랜잭션에는 영향이 없게 조정 할 수 있지만,
     // JtaTransactionManager 의 경우에는 내부 트랜잭션에서 문제가 생기면 외부 트랜잭션에도 영향을 받음(전파 레벨과 무관)
+
+    // 내부 트랜잭션에서 try-catch 로 또 잡아주면 exception 발생 없이 롤백 되지 않음!
     fun tryCatchTwiceInnerThrowRuntimeException() {
         testOuterRepository.save(TestOuterEntity(id = 1, content = "content 1"))
         try {
