@@ -109,6 +109,18 @@ class TestOuterService(
         testInnerService.moreInnerServiceRuntimeException()
     }
 
+    // TODO 7-1. kotlin run 은 이전에 Checked Exception 터지면 그 다음 코드부터 실행이 안되는지! -> 안되는 거 확인 완료!
+    fun kotlinRuntWithCheckedTest() {
+        println("outer service 시작")
+        testInnerService.kotlinRunWithCheckedExceptionTest()
+    }
+
+    // TODO 7-2. kotlin run 은 이전에 Runtime Exception 터지면 그 다음 코드부터 실행이 안되는지! -> 안되는 거 확인 완료!
+    fun kotlinRunWithRuntimeTest() {
+        println("outer service 시작")
+        testInnerService.kotlinRunWithRuntimeExceptionTest()
+    }
+
     private fun throwLocalRuntimeException() {
         throw RuntimeException("local runtime exception")
     }

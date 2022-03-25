@@ -68,4 +68,14 @@ class TestOuterServiceTest{
     fun moreInnerRuntime() {
         testOuterService.moreInnerRuntime()
     }
+
+    @Test
+    fun kotlinRunTestWithRuntime() {
+        testOuterService.kotlinRunWithRuntimeTest()
+    }
+
+    @Test
+    fun kotlinRunTestWithChecked() {
+        testOuterService.kotlinRuntWithCheckedTest()
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.jpatest.transactional
 
+import com.example.jpatest.extenstion.findByIdOrThrowCheckedException
+import com.example.jpatest.extenstion.findByIdOrThrowRuntimeException
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -46,6 +48,26 @@ class TestInnerService(
     fun moreInnerServiceCheckedException() {
         testOuterRepository.save(TestOuterEntity(id = 2, content = "content 2"))
         testMoreInnerService.throwCheckedException()
+    }
+
+    fun kotlinRunWithCheckedExceptionTest() {
+        println("inner service 시작")
+        val entity = testOuterRepository.findByIdOrThrowCheckedException(5)
+        entity.run {
+            val afterRuntEntity = testOuterRepository.save(TestOuterEntity(id = 2, content = "content 2"))
+            println("과연 실행될 것인가!!")
+            println(afterRuntEntity.content)
+        }
+    }
+
+    fun kotlinRunWithRuntimeExceptionTest() {
+        println("inner service 시작")
+        val entity = testOuterRepository.findByIdOrThrowRuntimeException(5)
+        entity.run {
+            val afterRuntEntity = testOuterRepository.save(TestOuterEntity(id = 2, content = "content 2"))
+            println("과연 실행될 것인가!!")
+            println(afterRuntEntity.content)
+        }
     }
 
     private fun throwRuntimeExceptionInInner() {
